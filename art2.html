@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphite Fine Art Studio</title>
+    <style>
+        /* CSS Implementation & Types: Internal stylesheet */
+        
+        /* Universal & Element Selectors */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4; /* Light graphite paper background */
+            color: #222222; /* Deep charcoal text */
+            padding: 20px;
+        }
+
+        /* Layout Structure using CSS Flex (Basic two-column split) */
+        .wrapper {
+            display: flex;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Left Side: Main Showcase & Footer Information */
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            width: 65%;
+            gap: 20px;
+        }
+
+        /* Right Side: Tutorials & Materials List */
+        .right-column {
+            width: 35%;
+            background-color: #ffffff;
+            border: 2px solid #777777; /* Pencil border style */
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        /* Elements & Component Classes */
+        .main-display {
+            background-color: #ffffff;
+            border: 2px solid #777777;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #777777;
+            border-radius: 4px;
+            background-color: #fafafa;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Upgraded Gallery Container: Flexbox grid with a neat scroll window */
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: flex-start;
+            max-height: 480px; /* Limits window height perfectly */
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        /* Custom minimal scrollbar design */
+        .gallery-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        .gallery-container::-webkit-scrollbar-thumb {
+            background-color: #cccccc;
+            border-radius: 4px;
+        }
+
+        /* Two-column responsive breakdown inside the wrap box */
+        .gallery-item {
+            width: calc(50% - 8px); 
+            border: 1px solid #bbbbbb;
+            padding: 10px;
+            background-color: #fbfbfb;
+            border-radius: 4px;
+            text-align: center;
+            transition: border-color 0.2s;
+        }
+
+        .gallery-item:hover {
+            border-color: #555555;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            background-color: #eaeaea;
+            border: 1px solid #dddddd;
+            border-radius: 2px;
+        }
+
+        .gallery-item p {
+            font-size: 0.8rem;
+            margin-top: 8px;
+            font-weight: bold;
+            color: #444444;
+        }
+
+        /* Footer Box mapping directly to your drawing layout */
+        .info-footer {
+            background-color: #ffffff;
+            border: 2px solid #777777;
+            padding: 20px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .footer-section {
+            width: 31%;
+        }
+
+        .footer-section h4 {
+            border-bottom: 1px solid #777777;
+            padding-bottom: 5px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: #222222;
+            letter-spacing: 0.5px;
+        }
+
+        /* Explicit styling for author profile links to turn them black instead of default blue */
+        .author-link {
+            color: #222222;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .author-link:hover {
+            text-decoration: underline;
+            color: #000000;
+        }
+
+        /* Layout Component: CSS Grid for Materials List */
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .material-card {
+            border: 1px solid #bbbbbb;
+            background-color: #fafafa;
+            padding: 8px;
+            text-align: center;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+
+        .material-card img {
+            border-radius: 2px;
+            margin-bottom: 4px;
+        }
+
+        .material-card a {
+            display: block;
+            margin-top: 5px;
+            color: #000000;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .material-card a:hover {
+            color: #444444;
+        }
+
+        /* Video element layout box transformed to Vertical Shorts Layout */
+        .video-box {
+            background-color: #eaeaea;
+            border: 1px solid #999999;
+            height: 400px; 
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .video-box video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: #000000;
+        }
+
+        /* Video selection button setup */
+        .video-controls {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+
+        .video-btn {
+            flex: 1;
+            padding: 6px;
+            font-size: 0.75rem;
+            background-color: #eaeaea;
+            border: 1px solid #777777;
+            cursor: pointer;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .video-btn:hover {
+            background-color: #dddddd;
+        }
+
+        /* Chatbot area implementation inside Left Footer Box */
+        .chatbot-btn {
+            background-color: #222222;
+            color: #ffffff;
+            border: none;
+            padding: 10px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 100%;
+            margin-top: 8px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .chatbot-btn:hover {
+            background-color: #444444;
+        }
+
+        /* Simple Utility Lists styling */
+        ul {
+            list-style-type: none;
+            font-size: 0.85rem;
+        }
+
+        li {
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        
+        <div class="left-column">
+            
+            <main class="main-display">
+                <input type="text" class="search-bar" placeholder="🔍 Search artwork subjects...">
+                
+                <div class="gallery-container">
+                    
+                    <div class="gallery-item">
+                        <img src="Screenshot 2026-06-04 at 1.01.41 AM.png" alt="Artwork 1">
+                        <p>Graphite Study I</p>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="Screenshot 2026-06-04 at 1.02.11 AM.png" alt="Artwork 2">
+                        <p>Graphite Study II</p>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="Screenshot 2026-06-04 at 1.02.38 AM.png" alt="Artwork 3">
+                        <p>Charcoal Rendering III</p>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="Screenshot 2026-06-04 at 1.03.04 AM.png" alt="Artwork 4">
+                        <p>Contrast Profile IV</p>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="Screenshot 2026-06-04 at 1.03.32 AM.png" alt="Artwork 5">
+                        <p>Proportion Composition V</p>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="Screenshot 2026-06-04 at 1.04.08 AM.png" alt="Artwork 6">
+                        <p>Tonal Gradient VI</p>
+                    </div>
+
+                </div>
+            </main>
+
+            <footer class="info-footer">
+                
+                <div class="footer-section">
+                    <h4>ABOUT</h4>
+                    <ul>
+                        <li style="display: flex; align-items: center; gap: 5px;">
+                            <a href="https://www.instagram.com/charcoal.aholic_/" target="_blank">
+                                <img src="download(9).jpeg" height="20px" width="20px" style="display: block;">
+                            </a>
+                            <strong>Insta:</strong> @charcoal.aholic_
+                        </li>
+                        <li style="margin-top: 5px;">Mediums: Graphite & Charcoal</li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>AUTHOR & CONTACT</h4>
+                    <ul>
+                        <li>Lead Artist: <a href="https://www.instagram.com/noorul_rifat/" target="_blank" class="author-link">Rifat N</a></li>
+                        <li>Email: rifat072007@gmail.com</li>
+                        <li>Members: <a href="https://www.instagram.com/_rohithh.07/" target="_blank" class="author-link">Rohith S</a></li>
+                        <li>Members: <a href="https://www.instagram.com/imrohith24/" target="_blank" class="author-link">Sanjay Kumar M</a></li>
+                        <li>Members: <a href="https://www.instagram.com/m.sanjaykumarsk/" target="_blank" class="author-link">Rohith D</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section" id="chatbot-panel">
+                    <h4>CHATBOT</h4>
+                    <p style="font-size: 0.75rem; color: #666;">Need artwork advice?</p>
+                    <button class="chatbot-btn" onclick="openChatbot()">Discuss Artwork</button>
+                </div>
+
+            </footer>
+
+        </div>
+
+        <aside class="right-column">
+            
+            <h3>TUTORIAL SHORTS</h3>
+            
+            <div class="video-box">
+                <video id="tutorial-player" controls>
+                    <source id="video-source" src="WhatsApp Video 2026-06-03 at 23.11.18.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <div class="video-controls">
+                <button class="video-btn" onclick="switchVideo('WhatsApp Video 2026-06-03 at 23.11.18.mp4')">Shorts 1</button>
+                <button class="video-btn" onclick="switchVideo('WhatsApp Video 2026-06-03 at 23.11.31.mp4')">Shorts 2</button>
+            </div>
+
+            <p style="font-size: 0.8rem; color: #555; margin-bottom: 20px; font-style: italic;">
+                Step-by-step vertical masterclass covering structural geometry, gradient mapping, and clean rendering.
+            </p>
+
+            <h3>REQUIRED MATERIALS</h3>
+            
+            <div class="materials-grid">
+                
+                <div class="material-card">
+                    <img src="download.jpeg" height="70px" width="100%" style="object-fit: cover;">
+                    <p>Graphite Pencils</p>
+                    <a href="https://amzn.in/d/005sWUNO" target="_blank">Shop Now</a>
+                </div>
+
+                <div class="material-card">
+                    <img src="images (1).jpeg" height="70px" width="100%" style="object-fit: cover;">
+                    <p>Blending Stumps</p>
+                    <a href="https://amzn.in/d/00FTxldE" target="_blank">Shop Now</a>
+                </div>
+
+                <div class="material-card">
+                    <img src="download (1).jpeg" height="70px" width="100%" style="object-fit: cover;">
+                    <p>Kneaded Eraser</p>
+                    <a href="https://amzn.in/d/0dadcxwv" target="_blank">Shop Now</a>
+                </div>
+
+                <div class="material-card">
+                    <img src="download (2).jpeg" height="70px" width="100%" style="object-fit: cover;">
+                    <p>Bristol Board</p>
+                    <a href="https://amzn.in/d/03BkGlD1" target="_blank">Shop Now</a>
+                </div>
+
+                <div class="material-card">
+                    <img src="download (3).jpeg" height="70px" width="100%" style="object-fit: cover;">
+                    <p>Charcoal Sticks</p>
+                    <a href="https://amzn.in/d/05fkSy8e" target="_blank">Shop Now</a>
+                </div>
+
+                <div class="material-card">
+                    <img src="download (4).jpeg" height="70px" width="100%" style="object-fit: cover;">
+                    <p>Fixative Spray</p>
+                    <a href="https://amzn.in/d/047ZStGx" target="_blank">Shop Now</a>
+                </div>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+    <script>
+        function switchVideo(videoFileName) {
+            var player = document.getElementById("tutorial-player");
+            var source = document.getElementById("video-source");
+            
+            source.src = videoFileName;
+            player.load(); 
+            player.play(); 
+        }
+
+        function openChatbot() {
+            var baseMessage = "Welcome to the Art Consultation Assistant!\n\n";
+            var choice = prompt(baseMessage + "What drawing technique do you want to learn?\n1. Charcoal Smudging\n2. Highlight Gradients\n3. Proportion Grid");
+            
+            if (choice === "1") {
+                alert("Tip: Use a soft blending stump or clean tissue in circular motions to achieve soft charcoal transitions.");
+            } else if (choice === "2") {
+                alert("Tip: Use your kneaded eraser to tap high-contrast highlights back out of heavy layers.");
+            } else if (choice === "3") {
+                alert("Tip: Draw light 2H pencil lines in a strict 1x1 grid ratio to get accurate automotive proportions.");
+            } else if (choice !== null) {
+                alert("Invalid selection. Feel free to try our consultation prompt options again!");
+            }
+        }
+    </script>
+</body>
+</html>
