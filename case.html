@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphite Fine Art Studio - F1 Case Study</title>
+    <style>
+  
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f5f7;
+            color: #1a1a1a;
+            padding: 20px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+   
+        .main-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border: 1px solid #b0b5bc;
+            padding: 20px;
+        }
+
+   
+        .layout-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+    
+        .studio-nav {
+            display: flex;
+            align-items: center;
+            border: 1px solid #c8ccd0;
+            border-radius: 4px;
+            padding: 10px 15px;
+            margin-bottom: 25px;
+            background-color: #ffffff;
+        }
+
+        .studio-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.65rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-right: 20px;
+            border-right: 1px solid #e0e0e0;
+            padding-right: 20px;
+        }
+
+        .studio-logo span {
+            font-size: 1.2rem;
+            letter-spacing: 0;
+            margin-bottom: -4px;
+        }
+
+        .search-bar-container {
+            flex-grow: 1;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            background-color: #fafafa;
+        }
+
+
+        .case-study-showcase {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+
+        .art-card {
+            background-color: #ffffff;
+            border: 1px solid #c8ccd0;
+            border-radius: 6px;
+            overflow: hidden;
+            padding: 12px;
+        }
+
+        .art-image-frame {
+            background-color: #e9ebed;
+            border: 1px solid #dbdee1;
+            border-radius: 4px;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .art-image-frame img {
+            max-width: 100%;
+            max-height: 480px;
+            object-fit: contain;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .art-card-title {
+            text-align: center;
+            padding: 12px 5px 2px 5px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            color: #333333;
+        }
+
+       
+        .document-box {
+            border: 1px solid #c8ccd0;
+            border-radius: 6px;
+            padding: 25px;
+            background-color: #ffffff;
+        }
+
+        .document-box h2 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            font-weight: 700;
+            color: #111;
+        }
+
+        .document-box .meta-line {
+            font-size: 0.85rem;
+            color: #666666;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e5e5e5;
+            padding-bottom: 10px;
+        }
+
+        .document-box h3 {
+            font-size: 1.1rem;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            color: #222;
+        }
+
+        .document-box p {
+            color: #444444;
+            margin-bottom: 15px;
+        }
+
+        .document-box ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: #444444;
+        }
+
+        .document-box li {
+            margin-bottom: 6px;
+        }
+
+
+        .studio-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-section {
+            border: 1px solid #8e949c;
+            border-radius: 4px;
+            padding: 15px;
+            background-color: #ffffff;
+        }
+
+        .sidebar-title {
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            color: #000000;
+        }
+
+        
+        .video-container {
+            background-color: #000000;
+            width: 100%;
+            aspect-ratio: 9 / 16; 
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+        .button-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .studio-btn {
+            background-color: #f0f2f5;
+            border: 1px solid #bec3c9;
+            padding: 6px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .studio-btn:hover {
+            background-color: #e4e6eb;
+        }
+
+        .sidebar-caption {
+            font-size: 0.8rem;
+            font-style: italic;
+            color: #555555;
+            line-height: 1.4;
+        }
+
+
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .material-item {
+            border: 1px solid #d0d4dc;
+            border-radius: 4px;
+            padding: 8px;
+            text-align: center;
+            background-color: #ffffff;
+        }
+
+        .material-thumb {
+            width: 100%;
+            aspect-ratio: 1;
+            background-color: #f7f7f7;
+            border-radius: 2px;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+    
+        .material-thumb img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .material-item p {
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #333;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .shop-link {
+            font-size: 0.75rem;
+            color: #000000;
+            text-decoration: underline;
+            font-weight: bold;
+            display: block;
+        }
+
+
+        .studio-footer {
+            margin-top: 25px;
+            border: 1px solid #b0b5bc;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            background-color: #ffffff;
+        }
+
+        .footer-col h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #000;
+            padding-bottom: 4px;
+            display: inline-block;
+        }
+
+        .footer-col p, .footer-col div {
+            font-size: 0.85rem;
+            color: #444;
+            margin-bottom: 5px;
+        }
+
+   
+        @media (max-width: 850px) {
+            .layout-grid {
+                grid-template-columns: 1fr;
+            }
+            .studio-footer {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-wrapper">
+
+
+        <header class="studio-nav">
+            <div class="studio-logo">
+                <span>🖎</span> NOIR
+            </div>
+            <div class="search-bar-container">
+                <input type="text" class="search-bar" placeholder="Search artwork subjects... (e.g., F1, Pencil, Graphite)">
+            </div>
+        </header>
+
+        <div class="layout-grid">
+
+
+            <main class="case-study-showcase">
+                
+
+                <div class="art-card">
+                    <div class="art-image-frame">
+
+                        <img src="Screenshot 2026-06-04 at 1.01.41 AM.png" alt="F1 Car Pencil Sketch Artwork">
+                    </div>
+                    <div class="art-card-title">Graphite Study I — Formula 1 Technical Rendering</div>
+                </div>
+
+                <div class="document-box">
+                    <h2>Case Study: Racing Dynamics in Graphite</h2>
+                    <div class="meta-line">Medium: Faber-Castell Graphite | Duration: 7+ Hours | Category: Automotive Profile</div>
+
+                    <h3>1. Executive Material Selection</h3>
+                    <p>To accurately capture the structural integrity, clean aerodynamics, and smooth gloss panels found on a high-end Formula 1 chassis, an expansive array of technical pencil matrices was employed. Choosing professional-grade <strong>Faber-Castell pencil layouts</strong> guaranteed clean rendering capabilities without wax-sheen interference.</p>
+
+                    <h3>2. Full Gradient Mapping Strategy</h3>
+                    <p>Achieving realistic mechanical depths requires sharp changes in values. The values are split systematically across six key density variations:</p>
+                    <ul>
+                        <li><strong>HB & 2B:</strong> Used to lay down initial structural geometries, proportions, and ultra-light base values on clean body panel lines.</li>
+                        <li><strong>4B & 6B:</strong> Applied heavily across intermediate transitions, tire compounds, complex wing setups, and steering components.</li>
+                        <li><strong>8B & 10B:</strong> Specially reserved for extreme shadow profiles, absolute darkness values underneath the underbody tray, and air intake openings.</li>
+                    </ul>
+
+                    <h3>3. Project Analysis</h3>
+                    <p>The total rendering phase lasted slightly upwards of 7 hours of continuous concentration. Execution required micro-precision shading adjustments to capture carbon fiber textures, tiny technical sponsors, and ground reflections accurately, preserving hard engineering corners next to organic lighting gradients.</p>
+                </div>
+
+            </main>
+
+            <aside class="studio-sidebar">
+                
+                <div class="sidebar-section">
+                    <div class="sidebar-title">Tutorial Shorts</div>
+                    <div class="video-container">
+                        <video controls poster="video-thumbnail-placeholder.jpg">
+                            <source src="process-clip.mp4" type="video/mp4">
+                            Your web browser does not support video playback.
+                        </video>
+                    </div>
+                    <div class="button-row">
+                        <button class="studio-btn">Shorts Clip 1</button>
+                        <button class="studio-btn">Shorts Clip 2</button>
+                    </div>
+                    <p class="sidebar-caption">
+                        Step-by-step vertical masterclass covering structural geometry, gradient mapping, and clean rendering adjustments.
+                    </p>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-title">Required Materials</div>
+                    
+                    <div class="materials-grid">
+                        <div class="material-item">
+                            <img src="download.jpeg" height="80px" width="100px">
+                    <p>Graphite Pencils</p>
+                    <a href="https://amzn.in/d/005sWUNO" target="_blank">Shop Now</a>
+                        </div>
+                        <div class="material-item">
+                            <img src="images (1).jpeg" height="80px" width="100px" >
+                    <p>Blending Stumps</p>
+                    <a href="https://amzn.in/d/00FTxldE" target="_blank">Shop Now</a>
+                        </div>
+                        <div class="material-item">
+                             <img src="download (1).jpeg" height="80px" width="100px" >
+                    <p>Kneaded Eraser</p>
+                    <a href="https://amzn.in/d/0dadcxwv" target="_blank">Shop Now</a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+        <footer class="studio-footer">
+            <div class="footer-col">
+                <h4>About</h4>
+                <p><strong>Insta:</strong> @charcoal.aholic_</p>
+                <p>Specialist profile focus on advanced automotive rendering, precision line setups, and structural concepts.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Author & Contact</h4>
+                <p>Lead Artist: <strong>Rifat N</strong></p>
+                <p>Email: rifat072007@gmail.com</p>
+            </div>
+            <div class="footer-col">
+                <h4>Chatbot</h4>
+                <p>Need artwork advice?</p>
+                <div style="border: 1px solid #ccc; padding: 6px; border-radius: 4px; font-size: 0.8rem; background-color: #fafafa; color: #777;">
+                    Ask something...
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>

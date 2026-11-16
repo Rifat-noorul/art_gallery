@@ -1,0 +1,260 @@
+/* Base Style Setup */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f6f9;
+    color: #333;
+    padding-top: 80px;
+}
+
+.content-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* CARD LAYOUT PATTERN */
+.card {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+h2 {
+    color: #1a365d;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 8px;
+}
+
+/* TASK 1 & TASK 8: NAVBAR & TOP-LEFT NAME STYLE */
+.navbar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: #1a365d;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.logo-name {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.home-icon {
+    font-size: 1.5rem;
+    color: #63b3ed;
+}
+
+.portfolio-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+/* TASK 2: NAVIGATION HOVER ACTIONS */
+.nav-links a {
+    color: #cbd5e0;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.nav-links a:hover {
+    color: #fff;
+    font-weight: 700; /* Bold on hover */
+    text-decoration: underline; /* Underlined on hover */
+}
+
+/* TASK 3: ABOUT ME UNIQUE CARD */
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.profile-img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #63b3ed;
+}
+
+.about-text h3 {
+    color: #2b6cb0;
+    margin-bottom: 10px;
+}
+
+.about-text p {
+    line-height: 1.6;
+}
+
+/* TASK 4: SKILLS 5 ITEMS GRID */
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #edf2f7;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.skill-logo {
+    font-size: 1.6rem;
+}
+
+.html-color { color: #e34c26; }
+.css-color { color: #264de4; }
+.js-color { color: #f0db4f; }
+.node-color { color: #3c873a; }
+.sql-color { color: #00758f; }
+
+/* TASK 5: PROJECT SECTIONS STYLING */
+.projects-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1xl));
+    gap: 20px;
+}
+
+.project-card {
+    background: #f7fafc;
+    border-left: 5px solid #2b6cb0;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.project-card h3 {
+    color: #2b6cb0;
+    margin-bottom: 8px;
+}
+
+/* TASK 6 & 7: RECOMMENDATIONS BOX LAYOUT */
+.recommendation-container {
+    margin-bottom: 25px;
+}
+
+.rec-card {
+    background: #f7fafc;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    border: 1px solid #e2e8f0;
+}
+
+.rec-card p {
+    font-style: italic;
+    margin-bottom: 8px;
+}
+
+.rec-author {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+/* INPUT FORM BLOCK */
+.form-container h3 {
+    margin-bottom: 12px;
+    color: #2b6cb0;
+}
+
+textarea, input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #cbd5e0;
+    border-radius: 4px;
+}
+
+.btn-submit {
+    background: #2b6cb0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+    background: #1a365d;
+}
+
+/* TASK 9: CONFIRMATION POPUP MODAL */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    max-width: 400px;
+    width: 90%;
+}
+
+.success-icon {
+    font-size: 3rem;
+    color: #48bb78;
+    margin-bottom: 15px;
+}
+
+.modal-content p {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.btn-close {
+    background: #4a5568;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
